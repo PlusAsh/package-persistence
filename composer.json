@@ -1,0 +1,24 @@
+{
+    "name": "ashley-hardy/persistence",
+    "description": "A MySQL persistence layer for plain PHP entities.",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "symfony/dotenv": "^6.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "AshleyHardy\\Persistence\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ashley Hardy",
+            "email": "a.hardy@h4rdy.co.uk"
+        }
+    ],
+    "require": {
+        "ashley-hardy/utilities": "^1.0"
+    }
+}
