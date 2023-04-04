@@ -3,7 +3,6 @@
 namespace AshleyHardy\Persistence;
 
 use AshleyHardy\Persistence\Query\QueryBuilder;
-use AshleyHardy\Utilities\Utils;
 use RuntimeException;
 use ReflectionClass;
 use ReflectionProperty;

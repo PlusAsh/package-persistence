@@ -19,6 +19,6 @@
         }
     ],
     "require": {
-        "ashley-hardy/utilities": "^1.0"
+        "ashley-hardy/utilities": "^2.0"
     }
 }

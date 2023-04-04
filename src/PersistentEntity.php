@@ -3,8 +3,8 @@
 namespace AshleyHardy\Persistence;
 
 use AshleyHardy\Persistence\Query\QueryBuilder;
-use AshleyHardy\Utilities\Utils;
-use ReflectionClass;
+use AshleyHardy\Utilities\Reflect;
+use AshleyHardy\Utilities\Str;
 use RuntimeException;
 
 abstract class PersistentEntity
@@ -42,7 +42,7 @@ abstract class PersistentEntity
         if($connection === null) $connection = $this->connection();
         $query = null;
 
-        if(!Utils::isPropertyInitialised('id', $this) || $this->id === null) {
+        if(!Reflect::isPropertyInitialised('id', $this) || $this->id === null) {
             $query = $this->insert();
         } else {
             $query = $this->update();
@@ -102,7 +102,7 @@ abstract class PersistentEntity
 
         $persistentProperties = array_merge(['id'], $this->persist());
         foreach($persistentProperties as $prop) {
-            $array[Utils::camelToSnake($prop)] = (Utils::isPropertyInitialised($prop, $this) ? $this->$prop : null);
+            $array[Str::camelToSnake($prop)] = (Reflect::isPropertyInitialised($prop, $this) ? $this->$prop : null);
         }
 
         return $array;
@@ -112,7 +112,7 @@ abstract class PersistentEntity
     {
         $instance = new static;
         foreach($data as $field => $value) {
-            $property = Utils::getPropertyFromEntity($instance, Utils::snakeToCamel($field));
+            $property = Reflect::getPropertyFromEntity($instance, Str::snakeToCamel($field));
             if($property) {
                 $property->setValue($instance, $value);
             }

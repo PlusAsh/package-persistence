@@ -3,7 +3,7 @@
 use AshleyHardy\Persistence\Connections\MySQL;
 use AshleyHardy\Persistence\PersistentEntity;
 use AshleyHardy\Persistence\Query\QueryBuilder;
-use AshleyHardy\Utilities\Utils;
+use AshleyHardy\Utilities\Ident;
 use PHPUnit\Framework\TestCase;
 
 class PersistenceTest extends TestCase
@@ -55,7 +55,7 @@ class PersistenceTest extends TestCase
         $testData['modified_at'] = $query->get('created_at');
 
         $this->assertTrue(
-            Utils::isUuid($testData['id']),
+            Ident::isUuid($testData['id']),
             "The insertion did not produce a valid Uuid {$testData['id']} for the test data."
         );
 
@@ -120,7 +120,7 @@ class PersistenceTest extends TestCase
         $testClass->save($connection);
 
         $this->assertTrue(
-            Utils::isUuid($testClass->id),
+            Ident::isUuid($testClass->id),
             "The insertion did not produce a valid Uuid {$testClass->id} for the test data."
         );
 

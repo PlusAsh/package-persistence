@@ -3,7 +3,8 @@
 use AshleyHardy\Persistence\Connections\MySQL;
 use AshleyHardy\Persistence\Query\Paginator;
 use AshleyHardy\Persistence\Query\QueryBuilder;
-use AshleyHardy\Utilities\Utils;
+use AshleyHardy\Utilities\Cal;
+use AshleyHardy\Utilities\Ident;
 use PHPUnit\Framework\TestCase;
 
 class QueryBuilderTest extends TestCase
@@ -148,13 +149,13 @@ class QueryBuilderTest extends TestCase
         QueryBuilder::reset();
 
         QueryBuilder::addFilter('INSERT', function(QueryBuilder $qb) {
-            $qb->column('id', Utils::uuid(), true)->column('created_at', Utils::datetime(), true)->column('modified_at', Utils::datetime(), true);
+            $qb->column('id', Ident::uuid(), true)->column('created_at', Cal::now(), true)->column('modified_at', Cal::now(), true);
         });
 
         $conn = self::getConnection();
         $result = (new QueryBuilder($conn))->insert(['data' => 'sup'])->into('test')->run();
         
-        $this->assertTrue(Utils::isUuid($result), 'The test insertion with the Query builder completed successfully.');
+        $this->assertTrue(Ident::isUuid($result), 'The test insertion with the Query builder completed successfully.');
 
         //Fetch the data we just inserted...
         $originalData = (new QueryBuilder($conn))->select()->from('test')->where('id = ?', $result)->run()[0] ?? null;
@@ -164,7 +165,7 @@ class QueryBuilderTest extends TestCase
         );
 
         QueryBuilder::addFilter('UPDATE', function(QueryBuilder $qb) {
-            $qb->column('modified_at', Utils::datetime(), true);
+            $qb->column('modified_at', Cal::now(), true);
         });
 
         $result = (new QueryBuilder($conn))->update(['data' => 'double-sup'])->into('test')->where('id = ?', $result)->run();
@@ -191,7 +192,7 @@ class QueryBuilderTest extends TestCase
         QueryBuilder::reset();
 
         QueryBuilder::addFilter('INSERT', function(QueryBuilder $qb) {
-            $qb->column('id', Utils::uuid(), true)->column('created_at', Utils::datetime(), true)->column('modified_at', Utils::datetime(), true);
+            $qb->column('id', Ident::uuid(), true)->column('created_at', Cal::now(), true)->column('modified_at', Cal::now(), true);
         });
 
         for($i = 0; $i < 50; $i++) {

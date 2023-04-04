@@ -3,7 +3,8 @@
 require(__DIR__ . '/../vendor/autoload.php');
 
 use AshleyHardy\Persistence\Query\QueryBuilder;
-use AshleyHardy\Utilities\Utils;
+use AshleyHardy\Utilities\Cal;
+use AshleyHardy\Utilities\Ident;
 use Symfony\Component\Dotenv\Dotenv;
 
 (new Dotenv())->load(__DIR__ . '/../.env');
@@ -18,9 +19,9 @@ use Symfony\Component\Dotenv\Dotenv;
 */
 
 QueryBuilder::addFilter('INSERT', function(QueryBuilder $qb) {
-    $qb->column('id', Utils::uuid(), true)->column('created_at', Utils::datetime(), true)->column('modified_at', Utils::datetime(), true);
+    $qb->column('id', Ident::uuid(), true)->column('created_at', Cal::now(), true)->column('modified_at', Cal::now(), true);
 });
 
 QueryBuilder::addFilter('UPDATE', function(QueryBuilder $qb) {
-    $qb->column('modified_at', Utils::datetime(), true);
+    $qb->column('modified_at', Cal::now(), true);
 });

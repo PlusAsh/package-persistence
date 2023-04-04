@@ -4,27 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0eaff3eabcf363bc3f9c2250233dfac1",
+    "content-hash": "5722fd4de6ab4aeae5a10f718a59d9ff",
     "packages": [
         {
             "name": "ashley-hardy/utilities",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PlusAsh/package-utils.git",
-                "reference": "e43c81764888937288f5ba10f00e6710407f04cb"
+                "reference": "8f2743b95425e5d3bf41332982c60ccf2547dab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PlusAsh/package-utils/zipball/e43c81764888937288f5ba10f00e6710407f04cb",
-                "reference": "e43c81764888937288f5ba10f00e6710407f04cb",
+                "url": "https://api.github.com/repos/PlusAsh/package-utils/zipball/8f2743b95425e5d3bf41332982c60ccf2547dab9",
+                "reference": "8f2743b95425e5d3bf41332982c60ccf2547dab9",
                 "shasum": ""
             },
             "require": {
                 "ramsey/uuid": "^4.7"
             },
             "require-dev": {
-                "phpunit/phpunit": "^10.0"
+                "pestphp/pest": "^2.4"
             },
             "type": "library",
             "autoload": {
@@ -42,9 +42,9 @@
             "description": "Common utilities and helpers across other AshleyHardy components and repositories.",
             "support": {
                 "issues": "https://github.com/PlusAsh/package-utils/issues",
-                "source": "https://github.com/PlusAsh/package-utils/tree/1.0.0"
+                "source": "https://github.com/PlusAsh/package-utils/tree/2.0.0"
             },
-            "time": "2023-04-04T06:40:50+00:00"
+            "time": "2023-04-04T07:50:45+00:00"
         },
         {
             "name": "brick/math",

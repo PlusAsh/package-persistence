@@ -4,7 +4,7 @@ namespace AshleyHardy\Persistence;
 
 use Hardy\PeriodApi\Issues\MigrationIssue;
 use AshleyHardy\Persistence\Query\QueryBuilder;
-use AshleyHardy\Utilities\Utils;
+use AshleyHardy\Utilities\Cal;
 
 final class Migrations
 {
@@ -85,7 +85,7 @@ final class Migrations
         $query = new QueryBuilder();
         $query->update([
             'rolled_back' => 1,
-            'rolled_back_at' => Utils::datetime()
+            'rolled_back_at' => Cal::now()
         ])->into('migrations')->where('id = ?', $existingMigration['id']);
 
         $this->connection->query($query);
